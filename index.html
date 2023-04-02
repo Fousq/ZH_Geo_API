@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAP</title>
+    <link rel = "stylesheet" href = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+</head>
+<body>
+    <div>
+        Your location: X = <span id="latitude"></span> Y = <span id="longitude"></span>
+    </div>
+    <div id = "map" style = "width: 900px; height: 580px"></div>
+<script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+<script language="JavaScript" src="http://www.geoplugin.net/javascript.gp" type="text/javascript"></script>
+              <script>
+                 // Creating map options
+                 latitude = geoplugin_latitude();
+                 longitude = geoplugin_longitude();
+
+                 document.getElementById("latitude").innerText=latitude;
+                 document.getElementById("longitude").innerText=longitude;
+
+
+                 var mapOptions = {
+                    center: [latitude, longitude],
+                    zoom: 10
+                 }
+                 
+                 // Creating a map object
+                 var map = new L.map('map', mapOptions);
+                 
+                 // Creating a Layer object
+                 var layer = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
+                 
+                 // Adding layer to the map
+                 map.addLayer(layer);
+              </script>
+</body>
+</html>
